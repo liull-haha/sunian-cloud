@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SunianCloudApplication {
+public class UserCloudApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SunianCloudApplication.class, args);
+		SpringApplication.run(UserCloudApplication.class, args);
 	}
 
 }
