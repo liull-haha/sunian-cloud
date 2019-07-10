@@ -15,7 +15,9 @@
 	<description>Demo project for Spring Boot</description>
 
 	<modules>
-		<module>cloud-service</module>
+		<module>cloud-eureka</module>
+		<module>cloud-user</module>
+		<module>cloud-blog</module>
 	</modules>
 
 	<properties>
@@ -47,6 +49,7 @@
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
