@@ -1,4 +1,4 @@
-package com.sunian.config;
+package com.sunain.aspect;
 
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
@@ -11,6 +11,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 
 /**
  * Created by liull on 2019/7/12.
