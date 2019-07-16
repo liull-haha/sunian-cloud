@@ -15,7 +15,7 @@ public class UserController {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @PostMapping(value = "/user",params = "method=sayUser")
+    @PostMapping(value = "/user")
     public String sayUser(@RequestParam("name")String name){
         logger.info("sayUser======={}",name);
         logger.debug("debug sayUser ===== {}",name);

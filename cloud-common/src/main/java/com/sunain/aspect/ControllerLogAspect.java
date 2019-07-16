@@ -12,8 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
-
 /**
  * Created by liull on 2019/7/12.
  *

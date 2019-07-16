@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "user-service",fallback = BlogToUserFeignServiceImpl.class)
 public interface BlogToUserFeignService {
 
-    @PostMapping("/user")
+    @PostMapping(value = "/user")
     String sayUser(@RequestParam("name")String name);
 }
