@@ -1,4 +1,4 @@
-package com.sunain.aspect;
+package com.sunian.aspect;
 
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
@@ -48,7 +48,7 @@ public class ControllerLogAspect {
         HttpServletRequest request = attributes.getRequest();
 
         // 打印请求相关参数
-        logger.info("========================================== Start ==========================================");
+        logger.info("请求开始=================================");
         // 打印请求 url
         logger.info("URL            : {}", request.getRequestURL().toString());
         // 打印 Http method
@@ -61,7 +61,7 @@ public class ControllerLogAspect {
 
     @After("webLog()")
     public void doAfter() throws Throwable {
-        logger.info("=========================================== End ===========================================");
+        logger.info("请求结束====================================");
         // 每个请求之间空一行
         logger.info("");
     }
