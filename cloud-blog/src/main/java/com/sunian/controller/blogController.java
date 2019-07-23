@@ -16,8 +16,8 @@ public class blogController {
     @Autowired
     BlogToUserFeignService blogToUserFeignService;
 
-    @PostMapping(value = "/blog")
-    public String sayBlog(@RequestParam("name") String name){
-        return blogToUserFeignService.sayUser(name);
+    @PostMapping(value = "/blog",params = "method=com.sunian.blog.sayBlog")
+    public String sayBlog(){
+        return blogToUserFeignService.getAllDept();
     }
 }
