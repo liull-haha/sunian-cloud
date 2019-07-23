@@ -2,7 +2,7 @@
 <configuration  scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>userLogback</contextName>
     <!--用来定义变量值-->
-    <property name="log.path" value="~/logs/user" />
+    <property name="log.path" value="/root/logs/user" />
 
     <!--格式化控制台输出-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -23,9 +23,10 @@
         </encoder>
     </appender>
 
-    <!--<logger name="com.sunian.controller.UserController" level="debug" additivity="true">
+    <logger name="com.sunian.dao.mapper" level="debug" additivity="false">
         <appender-ref ref="console"/>
-    </logger>-->
+        <appender-ref ref="file"/>
+    </logger>
 
     <root level="info">
         <appender-ref ref="console" />

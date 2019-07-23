@@ -16,6 +16,9 @@
 	<name>cloud-user</name>
 	<description>Demo project for Spring Boot</description>
 
+	<properties>
+		<mybatis.spring-boot.version>2.0.1</mybatis.spring-boot.version>
+	</properties>
 
 	<dependencies>
 
@@ -41,6 +44,11 @@
 			<groupId>com.sunain</groupId>
 			<artifactId>cloud-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis.spring-boot.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -1,12 +1,26 @@
 
 server:
   port: 18001
+
 spring:
   application:
     name: user-service
+  datasource:
+    test1:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://47.102.46.30:3306/testdb?characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+      username: liull
+      password: LLL_sgf315
+    test2:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://47.100.233.202:3306/testdb?characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+      username: sgf
+      password: SGF_lll315
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+
 
 
