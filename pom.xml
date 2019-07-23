@@ -24,6 +24,7 @@
 		<module>cloud-eureka</module>
 		<module>cloud-user</module>
 		<module>cloud-blog</module>
+		<module>cloud-tools</module>
 	</modules>
 
 	<properties>
@@ -31,6 +32,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
+		<mysql.conn.java.version>8.0.15</mysql.conn.java.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +46,24 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+
+		<!-- 连接数据库mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.conn.java.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.58</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<dependencyManagement>
