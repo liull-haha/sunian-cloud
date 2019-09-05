@@ -50,9 +50,9 @@ public class ControllerLogAspect {
         // 打印请求相关参数
         logger.info("请求开始=================================");
         // 打印请求 url
-        logger.info("URL            : {}", request.getRequestURL().toString());
+        logger.info("URL       : {}", request.getRequestURL().toString());
         // 打印 Http method
-        logger.info("请求方式    : {}", request.getMethod());
+        logger.info("请求方式   : {}", request.getMethod());
         // 打印调用 controller 的全路径以及执行方法
         logger.info("调用方法   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
         // 打印请求入参
@@ -62,8 +62,6 @@ public class ControllerLogAspect {
     @After("webLog()")
     public void doAfter() throws Throwable {
         logger.info("请求结束====================================");
-        // 每个请求之间空一行
-        logger.info("");
     }
 
     @Around("webLog()")

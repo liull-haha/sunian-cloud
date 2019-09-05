@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Created by liull on 2019/7/10.
@@ -39,6 +40,7 @@ public class UserController {
         }catch (Exception e){
             returnMap.put("respCode","8888");
             returnMap.put("respDesc","getAllUser失败："+e.toString());
+            logger.error("getAllUser失败",e);
         }
         return JSONObject.toJSONString(returnMap);
     }
@@ -50,9 +52,15 @@ public class UserController {
             returnMap = userService.getAllDept();
         }catch (Exception e){
             returnMap.put("respCode","8888");
-            returnMap.put("respDesc","getAllUser失败："+e.toString());
+            returnMap.put("respDesc","getAllDept失败："+e.toString());
+            logger.error("getAllDept失败",e);
         }
         return JSONObject.toJSONString(returnMap);
+    }
+
+    public static void main(String[] args) {
+        String a = "1111/";
+        System.out.println(a.charAt(a.length()-1));
     }
 
 }

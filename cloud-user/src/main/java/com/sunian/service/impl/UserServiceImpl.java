@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,10 +38,11 @@ public class UserServiceImpl implements UserService {
         }catch (Exception e){
             returnMap.put("respCode","8888");
             returnMap.put("respDesc","getAllUser失败："+e.toString());
-            logger.error("getAllUser失败：{}",e);
+            logger.error("getAllUser失败：===",e);
         }
         return returnMap;
     }
+
     @Override
     public Map<String, Object> getAllDept() {
         Map<String,Object> returnMap = new HashMap<>();
@@ -50,7 +52,7 @@ public class UserServiceImpl implements UserService {
         }catch (Exception e){
             returnMap.put("respCode","8888");
             returnMap.put("respDesc","getAllDept失败："+e.toString());
-            logger.error("getAllDept失败：{}",e);
+            logger.error("getAllDept失败:====",e);
         }
         return returnMap;
     }
