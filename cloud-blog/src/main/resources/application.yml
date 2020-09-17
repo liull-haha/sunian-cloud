@@ -1,6 +1,6 @@
 
 server:
-  port: 18002
+  port: 18001
 spring:
   application:
     name: blog-service

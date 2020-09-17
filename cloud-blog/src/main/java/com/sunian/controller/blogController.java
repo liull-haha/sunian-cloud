@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by liull on 2019/7/10.
  */
-@RestController
+@RestController("/aaa")
 public class blogController {
 
     @Autowired
