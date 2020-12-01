@@ -27,7 +27,7 @@ feign:
   hystrix:
     enabled: true
 
-#设置hystrix超时时间
+#设置hystrix超时时间，最终以openFeign超时时间为准
 hystrix:
   command:
     default:
