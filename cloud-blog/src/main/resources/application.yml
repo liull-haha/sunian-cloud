@@ -15,13 +15,23 @@ eureka:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
 
-#设置feign客户端超时时间(openFeign默认支持ribbon负载均衡)
-ribbon:
-  #指的是建立连接所用的时间，适用于网络状况iE常的情况下两端连接所用的时间
-  ReadTimeout: 5000
-  #指的是建立连接后从服务器读取到可用资源所用的时间
-  ConnectTimeout: 5000
-#开启hystrix服务熔断，降级配置
 feign:
+  #设置openFeign的超时时间，如果只是开启hystrix，则超时时间不生效，还是默认1000；如果要生效，还需要设置hystrix超时时间，大于openFeign的超时时间，不然也不生效
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        oggerLevel: basic
+  #开启hystrix服务熔断，降级配置，如果没开启则报500错误，开启则返回hystrix服务熔断定制错误
   hystrix:
     enabled: true
+
+#设置hystrix超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
