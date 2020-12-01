@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-@ComponentScan(basePackages = {"com.sunian"})
 public class CloudBlogApplication {
 
 	public static void main(String[] args) {

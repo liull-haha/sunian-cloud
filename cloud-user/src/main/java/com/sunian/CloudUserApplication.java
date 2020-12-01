@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 //禁用单数据源
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @EnableEurekaClient
-@ComponentScan(basePackages = {"com.sunian"})
 public class CloudUserApplication {
 
 	public static void main(String[] args) {

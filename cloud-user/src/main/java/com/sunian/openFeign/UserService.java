@@ -1,4 +1,4 @@
-package com.sunian.service;
+package com.sunian.openFeign;
 
 import java.util.Map;
 

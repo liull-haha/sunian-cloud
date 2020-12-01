@@ -1,15 +1,14 @@
-package com.sunian.service.impl;
+package com.sunian.openFeign.impl;
 
 import com.sunian.dao.mapper.test1.TfsUserMapper;
 import com.sunian.dao.mapper.test2.TfsDeptMapper;
 import com.sunian.dao.model.test1.TfsUser;
 import com.sunian.dao.model.test2.TfsDept;
-import com.sunian.service.UserService;
+import com.sunian.openFeign.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;

@@ -32,12 +32,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-		<!--引入AOP切面日志功能-->
-		<dependency>
-			<groupId>com.sunain</groupId>
-			<artifactId>cloud-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 
 

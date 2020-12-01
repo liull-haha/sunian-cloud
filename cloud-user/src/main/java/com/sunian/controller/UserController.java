@@ -1,18 +1,16 @@
 package com.sunian.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sunian.service.UserService;
+import com.sunian.openFeign.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Created by liull on 2019/7/10.
@@ -25,7 +23,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping(value = "/user",params = "method=com.sunian.user.sayUser")
+    @PostMapping(value = "/user/sayUser")
     public String sayUser(@RequestParam("name")String name){
         logger.info("sayUser======={}",name);
         logger.debug("debug sayUser ===== {}",name);
