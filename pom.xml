@@ -61,13 +61,6 @@
 			<version>1.2.58</version>
 		</dependency>
 
-		<!--引入AOP切面日志功能-->
-		<dependency>
-			<groupId>com.sunain</groupId>
-			<artifactId>cloud-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
