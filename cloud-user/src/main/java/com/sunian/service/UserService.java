@@ -1,9 +1,11 @@
-package com.sunian.openFeign;
+package com.sunian.service;
 
 import java.util.Map;
 
 /**
- * Created by liull on 2019/7/23.
+ * @author liull
+ * @description
+ * @date 2020/12/1
  */
 public interface UserService {
     Map<String,Object> getAllUser();

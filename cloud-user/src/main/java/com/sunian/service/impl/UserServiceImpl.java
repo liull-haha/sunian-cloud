@@ -1,10 +1,10 @@
-package com.sunian.openFeign.impl;
+package com.sunian.service.impl;
 
 import com.sunian.dao.mapper.test1.TfsUserMapper;
 import com.sunian.dao.mapper.test2.TfsDeptMapper;
 import com.sunian.dao.model.test1.TfsUser;
 import com.sunian.dao.model.test2.TfsDept;
-import com.sunian.openFeign.UserService;
+import com.sunian.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liull on 2019/7/23.
+ * @author liull
+ * @description
+ * @date 2020/12/1
  */
 @Service
 public class UserServiceImpl implements UserService {
