@@ -30,35 +30,4 @@ public class UserController {
         return "say user"+name;
     }
 
-    @PostMapping(value = "/user",params = "method=com.sunian.user.getAllUser")
-    public String getAllUser(){
-        Map<String,Object> returnMap = new HashMap<>();
-        try {
-            returnMap = userService.getAllUser();
-        }catch (Exception e){
-            returnMap.put("respCode","8888");
-            returnMap.put("respDesc","getAllUser失败："+e.toString());
-            logger.error("getAllUser失败",e);
-        }
-        return JSONObject.toJSONString(returnMap);
-    }
-
-    @PostMapping(value = "/user",params = "method=com.sunian.user.getAllDept")
-    public String getAllDept(){
-        Map<String,Object> returnMap = new HashMap<>();
-        try {
-            returnMap = userService.getAllDept();
-        }catch (Exception e){
-            returnMap.put("respCode","8888");
-            returnMap.put("respDesc","getAllDept失败："+e.toString());
-            logger.error("getAllDept失败",e);
-        }
-        return JSONObject.toJSONString(returnMap);
-    }
-
-    public static void main(String[] args) {
-        String a = "1111/";
-        System.out.println(a.charAt(a.length()-1));
-    }
-
 }

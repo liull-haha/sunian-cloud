@@ -8,6 +8,4 @@ import java.util.Map;
  * @date 2020/12/1
  */
 public interface UserService {
-    Map<String,Object> getAllUser();
-    Map<String,Object> getAllDept();
 }
