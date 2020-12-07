@@ -32,3 +32,4 @@ HELP.md
 /cloud-user/target/
 /cloud-common/target/
 /security/target/
+/gateway/target/
