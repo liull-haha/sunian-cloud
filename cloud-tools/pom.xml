@@ -19,11 +19,11 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!--<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -37,7 +37,7 @@
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>8.0.15</version>
+						<version>5.1.47</version>
 						<scope>runtime</scope>
 					</dependency>
 				</dependencies>

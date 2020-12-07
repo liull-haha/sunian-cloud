@@ -31,7 +31,7 @@
     </javaClientGenerator>
     
     <!--需要生成的表请按以下配置（tableName 是实际的表名  domainObjectName 映射成的java对象名） -->
-    <table tableName="tf_s_dept" domainObjectName="TfsDept"></table>
+    <table tableName="users" domainObjectName="Users"></table>
 
   </context>
 </generatorConfiguration>
