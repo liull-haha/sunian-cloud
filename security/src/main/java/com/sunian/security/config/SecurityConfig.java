@@ -1,6 +1,7 @@
 package com.sunian.security.config;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
@@ -27,25 +28,17 @@ import java.util.Map;
  */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    CustomUserService customUserService;
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    /*@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("liull")
-                .password("123456")
-                .roles("admin");
-    }*/
-
     @Override
-    @Bean
-    protected UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
-
-        return inMemoryUserDetailsManager;
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserService);
     }
 
     /**
