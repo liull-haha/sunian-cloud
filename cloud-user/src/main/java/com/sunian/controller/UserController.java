@@ -23,6 +23,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * ceshi
+     * @param name
+     * @return
+     */
     @PostMapping(value = "/user/sayUser")
     public String sayUser(@RequestParam("name")String name){
         logger.info("sayUser======={}",name);
