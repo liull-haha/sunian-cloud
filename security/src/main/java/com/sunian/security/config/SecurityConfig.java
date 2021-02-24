@@ -18,6 +18,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +37,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
+    /**
+     * 校验码验证
+     *
+     * @return
+     */
+    @Bean
+    MyAuthenticationProvider myAuthenticationProvider() {
+        MyAuthenticationProvider myAuthenticationProvider = new MyAuthenticationProvider();
+        myAuthenticationProvider.setUserDetailsService(customUserService);
+        myAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        return myAuthenticationProvider;
+    }
+
+    /**
+     * 添加自定义校验逻辑
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        ProviderManager providerManager = new ProviderManager(Arrays.asList(myAuthenticationProvider()));
+        return providerManager;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserService);
@@ -43,10 +69,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 角色继承  admin角色权限大于user角色权限，则user角色可以访问的资源，admin也可以访问
+     *
      * @return
      */
     @Bean
-    RoleHierarchy roleHierarchy(){
+    RoleHierarchy roleHierarchy() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
         roleHierarchy.setHierarchy("ROLE_admin > ROLE_user");
         return roleHierarchy;
@@ -68,6 +95,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //配置权限拦截规则：admin角色只能访问/admin/**资源，user角色只能访问/user/**资源
                 .antMatchers("/admin/**").hasRole("admin")
                 .antMatchers("/user/**").hasRole("user")
+                //放行验证码URL
+                .antMatchers("/hello/vc.jpg").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -75,29 +104,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")
                 .loginProcessingUrl("/doLogin")
                 //前后端分离使用
-                .successHandler((req,resp,authentication)->{
+                .successHandler((req, resp, authentication) -> {
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = resp.getWriter();
                     writer.write(JSONObject.toJSONString(authentication.getPrincipal()));
                     writer.flush();
                     writer.close();
                 })
-                .failureHandler((req,resp,exception)->{
-                    Map<String,String> resultMap = new HashMap<>();
-                    resultMap.put("respCode","8888");
+                .failureHandler((req, resp, exception) -> {
+                    Map<String, String> resultMap = new HashMap<>();
+                    resultMap.put("respCode", "8888");
                     String message = exception.getMessage();
-                    if(exception instanceof BadCredentialsException){
+                    if (exception instanceof BadCredentialsException) {
                         message = "用户名或密码错误";
-                    }else if(exception instanceof LockedException){
+                    } else if (exception instanceof LockedException) {
                         message = "账户被锁定";
-                    }else if(exception instanceof CredentialsExpiredException){
+                    } else if (exception instanceof CredentialsExpiredException) {
                         message = "密码过期";
-                    }else if(exception instanceof AccountExpiredException){
+                    } else if (exception instanceof AccountExpiredException) {
                         message = "账户过期";
-                    }else if(exception instanceof DisabledException){
+                    } else if (exception instanceof DisabledException) {
                         message = "账户被禁用";
                     }
-                    resultMap.put("respDesc",message);
+                    resultMap.put("respDesc", message);
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = resp.getWriter();
                     writer.write(JSONObject.toJSONString(resultMap));
@@ -108,11 +137,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 //自定义退出URL
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
-                .logoutSuccessHandler((req,resp,authentication)->{
-                    Map<String,String> resultMap = new HashMap<>();
-                    resultMap.put("respCode","0000");
-                    resultMap.put("respDesc","注销成功");
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
+                .logoutSuccessHandler((req, resp, authentication) -> {
+                    Map<String, String> resultMap = new HashMap<>();
+                    resultMap.put("respCode", "0000");
+                    resultMap.put("respDesc", "注销成功");
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = resp.getWriter();
                     writer.write(JSONObject.toJSONString(resultMap));
@@ -123,10 +152,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling()
                 //没有认证授权处理异常
-                .authenticationEntryPoint((req,resp,authException)->{
-                    Map<String,String> resultMap = new HashMap<>();
-                    resultMap.put("respCode","0001");
-                    resultMap.put("respDesc","尚未登录，请登陆");
+                .authenticationEntryPoint((req, resp, authException) -> {
+                    Map<String, String> resultMap = new HashMap<>();
+                    resultMap.put("respCode", "0001");
+                    resultMap.put("respDesc", "尚未登录，请登陆");
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = resp.getWriter();
                     writer.write(JSONObject.toJSONString(resultMap));
@@ -139,6 +168,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         //拦截忽略掉URL地址，首先忽略静态文件
         web.ignoring()
-                .antMatchers("/js/**","/css/**","/images/**");
+                .antMatchers("/js/**", "/css/**", "/images/**");
     }
 }
