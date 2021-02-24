@@ -5,9 +5,7 @@ import com.sunian.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +27,10 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/user/sayUser")
-    public String sayUser(@RequestParam("name")String name){
+    public String sayUser(@RequestParam("name")String name, @ModelAttribute("user") String user){
         logger.info("sayUser======={}",name);
-        logger.debug("debug sayUser ===== {}",name);
-        return "say user"+name;
+        logger.debug("debug sayUser ===== {}",user);
+        return "say user"+name+"|"+user;
     }
 
 }
