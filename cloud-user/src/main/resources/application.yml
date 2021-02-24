@@ -8,7 +8,7 @@ spring:
   datasource:
     test1:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://47.102.46.30:3306/springboot_test?characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+      jdbc-url: jdbc:mysql://47.100.76.176:3306/springboot_test?characterEncoding=utf8&useSSL=true&serverTimezone=UTC
       username: root
       password: 123456
 eureka:
