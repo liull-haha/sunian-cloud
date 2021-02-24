@@ -40,6 +40,10 @@ public class GlobalExceptionHandler {
         return Response.otherExceptionResp(ResponseEnum.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * 在每个controller之前绑定数据到user这个属性中
+     * @return
+     */
     @ModelAttribute("user")
     public String getUserInfo(){
         return "liull";
