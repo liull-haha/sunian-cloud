@@ -57,4 +57,16 @@ public class UserController {
         return "say Hello"+name+"|"+user;
     }
 
+    /**
+     * ceshi
+     * @param name
+     * @return
+     */
+    @PostMapping(value = "/user/sayHello")
+    public String sayHello3(@RequestParam("name")String name, @ModelAttribute("user") String user){
+        logger.info("sayUser======={}",name);
+        logger.debug("debug sayUser ===== {}",user);
+        return "say Hello"+name+"|"+user;
+    }
+
 }
